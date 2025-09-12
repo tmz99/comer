@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="import.css">
+    <title>TradeFlow - Cotizador de Importaciones</title>
+
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">TradeFlow</div>
+                <div class="logo-subtitle">Sistema de Comercio Exterior</div>
+            </div>
+            
+            <div class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Dashboard
+                </a>
+                
+                <a href="importacion.html" class="nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path d="M12 5v14"></path>
+                    <path d="M19 12l-7 7-7-7"></path>
+                    </svg>
+                    Importaciones
+                    </a>
+                
+                    
+                <a href="#" class="nav-item"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"> 
+                    <path d="M12 19V5"></path> 
+                    <path d="M5 12l7-7 7 7"></path> 
+                    </svg> 
+                    Exportaciones 
+                    </a>
+
+
+                <a href="#" class="nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Seguimiento
+                    </a>
+                
+                <a href="#" class="nav-item">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.98-1.75L23 6H6"></path>
+                    </svg>
+                    Marketplace
+                    </a>
+
+                <a href="#" class="nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path d="M12 8v4l3 3"></path>
+                    <circle cx="12" cy="12" r="10"></circle>
+                    </svg>
+                    Historial
+                     </a>
+                
+                <a href="#" class="nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                    Documentos
+                    </a>
+
+                <a href="#" class="nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Escaneo IA
+                    </a>
+
+                <a href="#" class="nav-item">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    Mi Perfil
+                    </a>
+
+                <a href="#" class="nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09c0 .66.39 1.25 1 1.51h.09a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.66.26 1.25.85 1.51 1.51H21a2 2 0 010 4h-.09c-.66 0-1.25.39-1.51 1z"></path>
+                    </svg>
+                    Configuración
+                    </a>
+
+                <a href="#" class="nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Cerrar Sesión
+                    </a>
+                
+            </div>
+        </nav>
+        
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <!-- Header del cotizador -->
+            <header class="header">
+                <div class="header-title">
+                    Cotización de Importación
+                    <span class="quotation-id">COT-2025-0001</span>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="btn btn-success" onclick="generateQuotation()">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                        <span>Generar Cotización</span>
+                    </button>
+                    
+                    <button class="btn btn-secondary" onclick="exportPDF()">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        <span>Exportar PDF</span>
+                    </button>
+                    
+                    <button class="btn btn-secondary" onclick="exportExcel()">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        <span>Exportar Excel</span>
+                    </button>
+                    
+                    <button class="theme-toggle" onclick="toggleTheme()">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Layout del cotizador -->
+            <div class="cotizador-layout">
+                <!-- Formulario principal -->
+                <div class="cotizador-main">
+                    <!-- Simulación multi-escenario -->
+                    <div class="scenario-selector">
+                    <div class="scenario-tab active" onclick="selectScenario(base)">Calculadora</div>
+                    <div class="scenario-tab">
+                        <a href="seguro.html">Seguro</a>
+                    </div>
+                    <div class="scenario-tab">
+                        <a href="transporte.html">Transporte</a>
+                    </div>
+                    </div>
+                    
+                    <!-- Alertas de validación -->
+                    <div id="validation-alerts"></div>
+                    
+                    <!-- 1. Datos Técnicos -->
+                    <div class="section-card">
+                        <div class="section-header">
+                            <div class="section-title">
+                                <div class="section-number">1</div>
+                                Datos Técnicos del Producto
+                            </div>
+                            <div class="validation-status status-incomplete">
+                                <svg class="status-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Datos requeridos
+                            </div>
+                        </div>
+                        <div class="section-content">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="form-label required">
+                                        Posición Arancelaria
+                                        
+                                    </label>
+                                    <div class="search-container">
+                                        <input type="text" class="form-input" id="posicion-arancelaria" 
+                                               placeholder="Buscar posición arancelaria..." 
+                                               oninput="searchPosicionArancelaria(this.value)">
+                                        <div class="search-results" id="search-results" style="display: none;"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label required">Descripción Técnica</label>
+                                    <input type="text" class="form-input" id="descripcion-tecnica" 
+                                           placeholder="Descripción detallada del producto">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label required">
+                                        País de Origen
+                                        
+                                    </label>
+                                    <select class="form-select" id="pais-origen">
+                                       <option value="">Seleccionar país...</option>
+                                <option value="AFG">Afganistán</option>
+                                <option value="ALB">Albania</option>
+                                <option value="DEU">Alemania</option>
+                                <option value="AND">Andorra</option>
+                                <option value="AGO">Angola</option>
+                                <option value="ATG">Antigua y Barbuda</option>
+                                <option value="SAU">Arabia Saudí</option>
+                                <option value="ARG">Argentina</option>
+                                <option value="ARM">Armenia</option>
+                                <option value="AUS">Australia</option>
+                                <option value="AUT">Austria</option>
+                                <option value="AZE">Azerbaiyán</option>
+                                <option value="BHS">Bahamas</option>
+                                <option value="BGD">Bangladés</option>
+                                <option value="BRB">Barbados</option>
+                                <option value="BEL">Bélgica</option>
+                                <option value="BLZ">Belice</option>
+                                <option value="BEN">Benín</option>
+                                <option value="BLR">Bielorrusia</option>
+                                <option value="MMR">Birmania</option>
+                                <option value="BOL">Bolivia</option>
+                                <option value="BIH">Bosnia y Herzegovina</option>
+                                <option value="BWA">Botsuana</option>
+                                <option value="BRA">Brasil</option>
+                                <option value="BRN">Brunéi</option>
+                                <option value="BGR">Bulgaria</option>
+                                <option value="BFA">Burkina Faso</option>
+                                <option value="BDI">Burundi</option>
+                                <option value="BTN">Bután</option>
+                                <option value="CPV">Cabo Verde</option>
+                                <option value="KHM">Camboya</option>
+                                <option value="CMR">Camerún</option>
+                                <option value="CAN">Canadá</option>
+                                <option value="QAT">Catar</option>
+                                <option value="TCD">Chad</option>
+                                <option value="CHL">Chile</option>
+                                <option value="CHN">China</option>
+                                <option value="CYP">Chipre</option>
+                                <option value="COL">Colombia</option>
+                                <option value="COM">Comoras</option>
+                                <option value="PRK">Corea del Norte</option>
+                                <option value="KOR">Corea del Sur</option>
+                                <option value="CRI">Costa Rica</option>
+                                <option value="CIV">Costa de Marfil</option>
+                                <option value="HRV">Croacia</option>
+                                <option value="CUB">Cuba</option>
+                                <option value="DNK">Dinamarca</option>
+                                <option value="DMA">Dominica</option>
+                                <option value="DOM">República Dominicana</option>
+                                <option value="ECU">Ecuador</option>
+                                <option value="EGY">Egipto</option>
+                                <option value="SLV">El Salvador</option>
+                                <option value="ARE">Emiratos Árabes Unidos</option>
+                                <option value="ERI">Eritrea</option>
+                                <option value="SVK">Eslovaquia</option>
+                                <option value="SVN">Eslovenia</option>
+                                <option value="ESP">España</option>
+                                <option value="USA">Estados Unidos</option>
+                                <option value="EST">Estonia</option>
+                                <option value="SWZ">Esuatini</option>
+                                <option value="ETH">Etiopía</option>
+                                <option value="PHL">Filipinas</option>
+                                <option value="FIN">Finlandia</option>
+                                <option value="FJI">Fiyi</option>
+                                <option value="FRA">Francia</option>
+                                <option value="GAB">Gabón</option>
+                                <option value="GMB">Gambia</option>
+                                <option value="GEO">Georgia</option>
+                                <option value="GHA">Ghana</option>
+                                <option value="GRC">Grecia</option>
+                                <option value="GRD">Granada</option>
+                                <option value="GTM">Guatemala</option>
+                                <option value="GIN">Guinea</option>
+                                <option value="GNQ">Guinea Ecuatorial</option>
+                                <option value="GNB">Guinea-Bisáu</option>
+                                <option value="GUY">Guyana</option>
+                                <option value="HTI">Haití</option>
+                                <option value="HND">Honduras</option>
+                                <option value="HUN">Hungría</option>
+                                <option value="IND">India</option>
+                                <option value="IDN">Indonesia</option>
+                                <option value="IRQ">Irak</option>
+                                <option value="IRN">Irán</option>
+                                <option value="IRL">Irlanda</option>
+                                <option value="ISL">Islandia</option>
+                                <option value="ISR">Israel</option>
+                                <option value="ITA">Italia</option>
+                                <option value="JAM">Jamaica</option>
+                                <option value="JPN">Japón</option>
+                                <option value="JOR">Jordania</option>
+                                <option value="KAZ">Kazajistán</option>
+                                <option value="KEN">Kenia</option>
+                                <option value="KGZ">Kirguistán</option>
+                                <option value="KIR">Kiribati</option>
+                                <option value="XKX">Kosovo</option>
+                                <option value="KWT">Kuwait</option>
+                                <option value="LAO">Laos</option>
+                                <option value="LSO">Lesoto</option>
+                                <option value="LVA">Letonia</option>
+                                <option value="LBN">Líbano</option>
+                                <option value="LBR">Liberia</option>
+                                <option value="LBY">Libia</option>
+                                <option value="LIE">Liechtenstein</option>
+                                <option value="LTU">Lituania</option>
+                                <option value="LUX">Luxemburgo</option>
+                                <option value="MDG">Madagascar</option>
+                                <option value="MYS">Malasia</option>
+                                <option value="MWI">Malaui</option>
+                                <option value="MDV">Maldivas</option>
+                                <option value="MLI">Malí</option>
+                                <option value="MLT">Malta</option>
+                                <option value="MAR">Marruecos</option>
+                                <option value="MHL">Islas Marshall</option>
+                                <option value="MRT">Mauritania</option>
+                                <option value="MUS">Mauricio</option>
+                                <option value="MEX">México</option>
+                                <option value="FSM">Micronesia</option>
+                                <option value="MDA">Moldavia</option>
+                                <option value="MCO">Mónaco</option>
+                                <option value="MNG">Mongolia</option>
+                                <option value="MNE">Montenegro</option>
+                                <option value="MOZ">Mozambique</option>
+                                <option value="NAM">Namibia</option>
+                                <option value="NRU">Nauru</option>
+                                <option value="NPL">Nepal</option>
+                                <option value="NIC">Nicaragua</option>
+                                <option value="NER">Níger</option>
+                                <option value="NGA">Nigeria</option>
+                                <option value="NOR">Noruega</option>
+                                <option value="NZL">Nueva Zelanda</option>
+                                <option value="OMN">Omán</option>
+                                <option value="NLD">Países Bajos</option>
+                                <option value="PAK">Pakistán</option>
+                                <option value="PLW">Palaos</option>
+                                <option value="PSE">Palestina</option>
+                                <option value="PAN">Panamá</option>
+                                <option value="PNG">Papúa Nueva Guinea</option>
+                                <option value="PRY">Paraguay</option>
+                                <option value="PER">Perú</option>
+                                <option value="POL">Polonia</option>
+                                <option value="PRT">Portugal</option>
+                                <option value="GBR">Reino Unido</option>
+                                <option value="CAF">República Centroafricana</option>
+                                <option value="CZE">República Checa</option>
+                                <option value="MKD">Macedonia del Norte</option>
+                                <option value="COG">República del Congo</option>
+                                <option value="COD">República Democrática del Congo</option>
+                                <option value="ROU">Rumania</option>
+                                <option value="RUS">Rusia</option>
+                                <option value="RWA">Ruanda</option>
+                                <option value="KNA">San Cristóbal y Nieves</option>
+                                <option value="SMR">San Marino</option>
+                                <option value="STP">Santo Tomé y Príncipe</option>
+                                <option value="LCA">Santa Lucía</option>
+                                <option value="VCT">San Vicente y las Granadinas</option>
+                                <option value="SEN">Senegal</option>
+                                <option value="SRB">Serbia</option>
+                                <option value="SYC">Seychelles</option>
+                                <option value="SLE">Sierra Leona</option>
+                                <option value="SGP">Singapur</option>
+                                <option value="SYR">Siria</option>
+                                <option value="SOM">Somalia</option>
+                                <option value="LKA">Sri Lanka</option>
+                                <option value="ZAF">Sudáfrica</option>
+                                <option value="SDN">Sudán</option>
+                                <option value="SSD">Sudán del Sur</option>
+                                <option value="SWE">Suecia</option>
+                                <option value="CHE">Suiza</option>
+                                <option value="THA">Tailandia</option>
+                                <option value="TWN">Taiwán</option>
+                                <option value="TJK">Tayikistán</option>
+                                <option value="TZA">Tanzania</option>
+                                <option value="THA">Tailandia</option>
+                                <option value="TLS">Timor Oriental</option>
+                                <option value="TGO">Togo</option>
+                                <option value="TON">Tonga</option>
+                                <option value="TTO">Trinidad y Tobago</option>
+                                <option value="TUN">Túnez</option>
+                                <option value="TUR">Turquía</option>
+                                <option value="TKM">Turkmenistán</option>
+                                <option value="TUV">Tuvalu</option>
+                                <option value="UKR">Ucrania</option>
+                                <option value="UGA">Uganda</option>
+                                <option value="URY">Uruguay</option>
+                                <option value="UZB">Uzbekistán</option>
+                                <option value="VUT">Vanuatu</option>
+                                <option value="VAT">Ciudad del Vaticano</option>
+                                <option value="VEN">Venezuela</option>
+                                <option value="VNM">Vietnam</option>
+                                <option value="YEM">Yemen</option>
+                                <option value="ZMB">Zambia</option>
+                                <option value="ZWE">Zimbabue</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label required">
+                                        Incoterm
+                                        <div class="tooltip-trigger">
+                                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                            <div class="tooltip">Término de comercio internacional que define responsabilidades</div>
+                                        </div>
+                                    </label>
+                                    <select class="form-select" id="incoterm">
+                                        <option value="">Seleccionar Incoterm...</option>
+                                        <option value="EXW">EXW - Ex Works</option>
+                                        <option value="FCA">FCA - Free Carrier</option>
+                                        <option value="FOB">FOB - Free On Board</option>
+                                        <option value="FAS">FAS - Free Alongside Ship</option>
+                                        <option value="CFR">CFR - Cost and Freight</option>
+                                        <option value="CIF">CIF - Cost, Insurance and Freight</option>
+                                        <option value="CPT">CPT - Carriage Paid To</option>
+                                        <option value="CIP">CIP - Carriage and Insurance Paid To</option>
+                                        <option value="DAP">DAP - Delivered At Place</option>
+                                        <option value="DPU">DPU - Delivered at Place Unloaded</option>
+                                        <option value="DDP">DDP - Delivered Duty Paid</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label required">
+                                        Valor de la mercaderia  
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-prefix">USD</span>
+                                        <input type="number" class="form-input" id="valor-fob" 
+                                               placeholder="0.00" step="0.01" oninput="calculateCIF()">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label required">
+                                        Flete Internacional
+                                       
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-prefix">USD</span>
+                                        <input type="number" class="form-input" id="flete-internacional" 
+                                               placeholder="0.00" step="0.01" oninput="calculateCIF()">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label required">
+                                        Seguro Internacional
+                                       
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-prefix">USD</span>
+                                        <input type="number" class="form-input" id="seguro-internacional" 
+                                               placeholder="0.00" step="0.01" oninput="calculateCIF()">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        Valor CIF 
+                                        <div class="tooltip-trigger">
+                                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                            <div class="tooltip">Base para el cálculo de aranceles</div>
+                                        </div>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-prefix">USD</span>
+                                        <input type="number" class="form-input calculated" id="valor-cif" 
+                                               placeholder="0.00" step="0.01" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              
+
+               <!-- 2. Tributos y Derechos -->
+<div class="section-card">
+    <div class="section-header">
+        <div class="section-title">
+            <div class="section-number">2</div>
+            Tributos y Derechos
+        </div>
+        <div class="validation-status status-warning">
+            <svg class="status-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+            </svg>
+            Verificar tasas
+        </div>
+    </div>
+    <div class="section-content">
+        <div class="form-grid">
+
+
+    <!-- Arancel Externo Común -->
+<div class="form-group">
+  <label class="form-label">Arancel Externo Común</label>
+  <div class="input-group-horizontal">
+    
+    <!-- Selector pequeño primero -->
+    <select class="form-select compacto" id="arancel-externo-tipo" onchange="updatePlaceholder('arancel-externo')">
+      <option value="percent">%</option>
+      <option value="amount">USD</option>
+    </select>
+
+    <!-- Input numérico pegado -->
+    <input type="number" class="form-input" id="arancel-externo" placeholder="0.00" step="0.01" oninput="calculateTributos()">
+
+  </div>
+</div>
+
+
+          <!-- Ad-Valorem -->
+<div class="form-group">
+  <label class="form-label">Ad-Valorem</label>
+  <div class="input-group-horizontal">
+    
+    <!-- Selector compacto primero -->
+    <select class="form-select compacto" id="ad-valorem-tipo" onchange="updatePlaceholder('ad-valorem')">
+      <option value="percent">%</option>
+      <option value="amount">USD</option>
+    </select>
+
+    <!-- Input numérico pegado -->
+    <input type="number" class="form-input" id="ad-valorem" placeholder="0.00" step="0.01" oninput="calculateTributos()">
+
+  </div>
+</div>
+
+
+    <!-- Derechos Específicos/Mixtos -->
+<div class="form-group">
+  <label class="form-label">Derechos Específicos/Mixtos</label>
+  <div class="input-group-horizontal">
+    
+    <!-- Selector compacto primero -->
+    <select class="form-select compacto" id="derechos-especificos-tipo" onchange="updatePlaceholder('derechos-especificos')">
+      <option value="percent">%</option>
+      <option value="amount">USD</option>
+    </select>
+
+    <!-- Input numérico pegado -->
+    <input type="number" class="form-input" id="derechos-especificos" placeholder="0.00" step="0.01" oninput="calculateTributos()">
+
+  </div>
+</div>
+
+
+    <!-- Tasa de Estadística -->
+<div class="form-group">
+  <label class="form-label">Tasa de Estadística</label>
+  <div class="input-group-horizontal">
+    
+    <!-- Selector compacto primero -->
+    <select class="form-select compacto" id="tasa-estadistica-tipo" onchange="updatePlaceholder('tasa-estadistica')">
+      <option value="percent">%</option>
+      <option value="amount">USD</option>
+    </select>
+
+    <!-- Input numérico pegado -->
+    <input type="number" class="form-input" id="tasa-estadistica" placeholder="0.00" step="0.01"  oninput="calculateTributos()">
+
+  </div>
+</div>
+
+
+    <!-- Comprobación de Destino -->
+<div class="form-group">
+  <label class="form-label">Comprobación de Destino</label>
+  <div class="input-group-horizontal">
+    
+    <!-- Selector compacto primero -->
+    <select class="form-select compacto" id="comprobacion-destino-tipo" onchange="updatePlaceholder('comprobacion-destino')">
+      <option value="percent">%</option>
+      <option value="amount">USD</option>
+    </select>
+
+    <!-- Input numérico pegado -->
+    <input type="number" class="form-input" id="comprobacion-destino" placeholder="0.00" step="0.01" oninput="calculateTributos()">
+
+  </div>
+</div>
+
+
+    <!-- Antidumping -->
+<div class="form-group">
+  <label class="form-label">Antidumping</label>
+  <div class="input-group-horizontal">
+    
+    <!-- Selector compacto primero -->
+    <select class="form-select compacto" id="antidumping-tipo" onchange="updatePlaceholder('antidumping')">
+      <option value="percent">%</option>
+      <option value="amount">USD</option>
+    </select>
+
+    <!-- Input numérico pegado -->
+    <input type="number" class="form-input" id="antidumping" placeholder="0.00" step="0.01" oninput="calculateTributos()">
+
+  </div>
+</div>
+
+    <!-- Derechos de Exportación -->
+<div class="form-group">
+  <label class="form-label">Derechos de Exportación</label>
+  <div class="input-group-horizontal">
+    
+    <!-- Selector compacto primero -->
+    <select class="form-select compacto" id="derechos-exportacion-tipo" onchange="updatePlaceholder('derechos-exportacion')">
+      <option value="percent">%</option>
+      <option value="amount">USD</option>
+    </select>
+
+    <!-- Input numérico pegado -->
+    <input type="number" class="form-input" id="derechos-exportacion" placeholder="0.00" step="0.01" oninput="calculateTributos()">
+
+  </div>
+</div>
+        </div>
+    </div>
+</div>
+
+<!-- 3. Impuestos Nacionales -->
+<div class="section-card">
+    <div class="section-header">
+        <div class="section-title">
+            <div class="section-number">3</div>
+            Impuestos Nacionales
+        </div>
+        <div class="validation-status status-complete">
+            <svg class="status-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            Configurado
+        </div>
+    </div>
+    <div class="section-content">
+        <div class="form-grid">
+
+           <!-- IVA -->
+<div class="form-group">
+  <label class="form-label">IVA</label>
+  <div class="input-group-horizontal">
+    
+    <!-- Selector compacto primero -->
+    <select class="form-select compacto" id="iva-tipo" onchange="updatePlaceholder('iva')">
+      <option value="percent">%</option>
+      <option value="amount">USD</option>
+    </select>
+
+    <!-- Input numérico pegado -->
+    <input type="number" class="form-input" id="iva" placeholder="0.00" step="0.01"  oninput="calculateImpuestos()">
+
+  </div>
+</div>
+
+
+    <!-- Tasa de Comercialización -->
+<div class="form-group">
+  <label class="form-label">Tasa de Comercialización</label>
+  <div class="input-group-horizontal">
+    
+    <!-- Selector compacto primero -->
+    <select class="form-select compacto" id="tasa-comercializacion-tipo" onchange="updatePlaceholder('tasa-comercializacion')">
+      <option value="percent">%</option>
+      <option value="amount">USD</option>
+    </select>
+
+    <!-- Input numérico pegado -->
+    <input type="number" class="form-input" id="tasa-comercializacion" placeholder="0.00" step="0.01" oninput="calculateImpuestos()">
+
+  </div>
+</div>
+
+<!-- Anticipo Ganancias -->
+<div class="form-group">
+  <label class="form-label">Anticipo Ganancias</label>
+  <div class="input-group-horizontal">
+    
+    <!-- Selector compacto primero -->
+    <select class="form-select compacto" id="anticipo-ganancias-tipo" onchange="updatePlaceholder('anticipo-ganancias')">
+      <option value="percent">%</option>
+      <option value="amount">USD</option>
+    </select>
+
+    <!-- Input numérico pegado -->
+    <input type="number" class="form-input" id="anticipo-ganancias" placeholder="0.00" step="0.01"  oninput="calculateImpuestos()">
+
+  </div>
+</div>
+
+    <!-- Anticipo Ingresos Brutos -->
+<div class="form-group">
+  <label class="form-label">Anticipo Ingresos Brutos</label>
+  <div class="input-group-horizontal">
+    
+    <!-- Selector compacto primero -->
+    <select class="form-select compacto" id="anticipo-iibb-tipo" onchange="updatePlaceholder('anticipo-iibb')">
+      <option value="percent">%</option>
+      <option value="amount">USD</option>
+    </select>
+
+    <!-- Input numérico pegado -->
+    <input type="number" class="form-input" id="anticipo-iibb" placeholder="0.00" step="0.01"  oninput="calculateImpuestos()">
+
+  </div>
+</div>
+        </div>
+    </div>
+</div>
+
+<!-- 4. Impuestos Internos -->
+<div class="section-card">
+    <div class="section-header">
+        <div class="section-title">
+            <div class="section-number">4</div>
+            Impuestos Internos
+        </div>
+        <div class="validation-status status-complete">
+            <svg class="status-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            No aplica
+        </div>
+    </div>
+    <div class="section-content">
+        <div class="form-grid">
+           
+        <!-- Combustibles Líquidos -->
+<div class="form-group">
+  <label class="form-label">Combustibles Líquidos</label>
+  <div class="input-group-horizontal">
+    
+    <!-- Selector compacto primero -->
+    <select class="form-select compacto" id="imp-combustibles-tipo" onchange="updatePlaceholder('imp-combustibles')">
+      <option value="percent">%</option>
+      <option value="amount">USD</option>
+    </select>
+
+    <!-- Input numérico pegado -->
+    <input type="number" class="form-input" id="imp-combustibles" placeholder="0.00" step="0.01" oninput="calculateImpuestosInternos()">
+
+  </div>
+</div>
+
+    <!-- Bienes Suntuarios -->
+<div class="form-group">
+  <label class="form-label">Bienes Suntuarios</label>
+  <div class="input-group-horizontal">
+    
+    <!-- Selector compacto primero -->
+    <select class="form-select compacto" id="imp-suntuarios-tipo" onchange="updatePlaceholder('imp-suntuarios')">
+      <option value="percent">%</option>
+      <option value="amount">USD</option>
+    </select>
+
+    <!-- Input numérico pegado -->
+    <input type="number" class="form-input" id="imp-suntuarios" placeholder="0.00" step="0.01" oninput="calculateImpuestosInternos()">
+
+  </div>
+</div>
+
+    <!-- Bebidas Analcohólicas -->
+<div class="form-group">
+  <label class="form-label">Bebidas Analcohólicas</label>
+  <div class="input-group-horizontal">
+    
+    <!-- Selector compacto primero -->
+    <select class="form-select compacto" id="imp-bebidas-tipo" onchange="updatePlaceholder('imp-bebidas')">
+      <option value="percent">%</option>
+      <option value="amount">USD</option>
+    </select>
+
+    <!-- Input numérico pegado -->
+    <input type="number" class="form-input" id="imp-bebidas" placeholder="0.00" step="0.01" oninput="calculateImpuestosInternos()">
+
+  </div>
+</div>
+
+    <!-- Otros Específicos -->
+<div class="form-group">
+  <label class="form-label">Otros Específicos</label>
+  <div class="input-group-horizontal">
+    
+    <!-- Selector compacto primero -->
+    <select class="form-select compacto" id="imp-otros-tipo" onchange="updatePlaceholder('imp-otros')">
+      <option value="percent">%</option>
+      <option value="amount">USD</option>
+    </select>
+
+    <!-- Input numérico pegado -->
+    <input type="number" class="form-input" id="imp-otros" placeholder="0.00" step="0.01" oninput="calculateImpuestosInternos()">
+
+  </div>
+</div>
+        </div>
+    </div>
+</div>
+
+                    
+                    <!-- 5. Otros Gastos -->
+                    <div class="section-card">
+                        <div class="section-header">
+                            <div class="section-title">
+                                <div class="section-number">5</div>
+                                Otros Gastos Operativos
+                            </div>
+                            <div class="validation-status status-incomplete">
+                                <svg class="status-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Completar costos
+                            </div>
+                        </div>
+                        <div class="section-content">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="form-label required">
+                                        Honorarios del Despachante
+                                        
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-prefix">USD</span>
+                                        <input type="number" class="form-input" id="honorarios-despachante" 
+                                               placeholder="500.00" step="0.01" oninput="calculateOtrosGastos()">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Gastos Bancarios</label>
+                                    <div class="input-group">
+                                        <span class="input-prefix">USD</span>
+                                        <input type="number" class="form-input" id="gastos-bancarios" 
+                                               placeholder="150.00" step="0.01" oninput="calculateOtrosGastos()">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        Gastos Agente Transporte Aduanero
+                                        
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-prefix">USD</span>
+                                        <input type="number" class="form-input" id="gastos-agente" 
+                                               placeholder="200.00" step="0.01" oninput="calculateOtrosGastos()">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Almacenaje y Manipuleo</label>
+                                    <div class="input-group">
+                                        <span class="input-prefix">USD</span>
+                                        <input type="number" class="form-input" id="almacenaje" 
+                                               placeholder="100.00" step="0.01" oninput="calculateOtrosGastos()">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Transporte Local</label>
+                                    <div class="input-group">
+                                        <span class="input-prefix">USD</span>
+                                        <input type="number" class="form-input" id="transporte-local" 
+                                               placeholder="300.00" step="0.01" oninput="calculateOtrosGastos()">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Otros Gastos</label>
+                                    <div class="input-group">
+                                        <span class="input-prefix">USD</span>
+                                        <input type="number" class="form-input" id="otros-gastos-misc" 
+                                               placeholder="0.00" step="0.01" oninput="calculateOtrosGastos()">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+          <!-- Panel de resumen sticky -->
+<div class="summary-panel">
+    <div class="summary-header">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+        </svg>
+        Resumen de Cotización
+    </div>
+    
+
+    <!-- Base de Cálculo -->
+    <div class="summary-section">
+        <h4>Base de Cálculo</h4>
+        <div class="summary-item">
+            <span>Valor FOB:</span>
+            <span class="summary-value" id="summary-fob">USD 0.00</span>
+        </div>
+        <div class="summary-item">
+            <span>Flete:</span>
+            <span class="summary-value" id="summary-flete">USD 0.00</span>
+        </div>
+        <div class="summary-item">
+            <span>Seguro:</span>
+            <span class="summary-value" id="summary-seguro">USD 0.00</span>
+        </div>
+        <div class="summary-item">
+            <span><strong>Valor CIF:</strong></span>
+            <span class="summary-value auto" id="summary-cif">USD 0.00</span>
+        </div>
+    </div>
+    
+    <!-- Tributos y Derechos -->
+<div class="summary-section">
+    <h4>Tributos y Derechos</h4>
+    <div class="summary-item">
+        <span>Arancel Externo:</span>
+        <span class="summary-value auto" id="summary-arancel">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span>Ad-Valorem:</span>
+        <span class="summary-value auto" id="summary-advalorem">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span>Derechos Específicos:</span>
+        <span class="summary-value auto" id="summary-especificos">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span>Tasa Estadística:</span>
+        <span class="summary-value auto" id="summary-estadistica">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span>Antidumping:</span>
+        <span class="summary-value auto" id="summary-antidumping">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span>Otros Derechos:</span>
+        <span class="summary-value auto" id="summary-otros-derechos">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span><strong>Subtotal Tributos y derechos:</strong></span>
+        <span class="summary-value auto" id="subtotal-tributos">USD 0.00</span>
+    </div>
+</div>
+
+<!-- Impuestos Internos -->
+<div class="summary-section">
+    <h4>Impuestos Internos</h4>
+    <div class="summary-item">
+        <span>Combustibles:</span>
+        <span class="summary-value auto" id="summary-combustibles">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span>Bienes Suntuarios:</span>
+        <span class="summary-value auto" id="summary-suntuarios">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span>Bebidas:</span>
+        <span class="summary-value auto" id="summary-bebidas">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span>Otros Específicos:</span>
+        <span class="summary-value auto" id="summary-otros-imp">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span><strong>Subtotal Impuestos internos:</strong></span>
+        <span class="summary-value auto" id="subtotal-internos">USD 0.00</span>
+    </div>
+</div>
+
+<!-- Otros Gastos -->
+<div class="summary-section">
+    <h4>Gastos Operativos</h4>
+    <div class="summary-item">
+        <span>Honorarios Despachante:</span>
+        <span class="summary-value" id="summary-despachante">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span>Gastos Bancarios:</span>
+        <span class="summary-value" id="summary-bancarios">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span>Agente Transporte:</span>
+        <span class="summary-value" id="summary-agente">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span>Almacenaje:</span>
+        <span class="summary-value" id="summary-almacenaje">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span>Transporte Local:</span>
+        <span class="summary-value" id="summary-transporte">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span>Otros Gastos:</span>
+        <span class="summary-value" id="summary-otros">USD 0.00</span>
+    </div>
+    <div class="summary-item">
+        <span><strong>Subtotal Gastos:</strong></span>
+        <span class="summary-value auto" id="subtotal-gastos">USD 0.00</span>
+    </div>
+</div>
+
+
+   <div class="summary-section">
+  <h4>Impuestos Nacionales</h4>
+  <div class="summary-item">
+    <span>Total Impuestos Nacionales:</span>
+    <span class="summary-value auto" id="summary-impuestos-nacionales">USD 0.00</span>
+  </div>
+</div>
+
+<div class="summary-section">
+  <div class="summary-item total">
+    <span>Costo total de la importación</span>
+    <span class="summary-value auto" id="total-final">USD 0.00</span>
+  </div>
+
+  <div class="dolar-box">
+  <span id="dolar-valor">USD 1 = ARS 0.00</span>
+  <button id="btn-ver-pesos" class="btn-verpesos">Ver en pesos</button>
+</div>
+
+<div id="costo-ars" class="costo-ars-text"></div>
+</div>
+
+
+
+
+                    
+                    <!-- Acciones rápidas -->
+                    <div class="summary-section">
+                        <button class="btn btn-primary" style="width: 100%; margin-bottom: 0.75rem;" onclick="generateQuotation()">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Generar Cotización
+                        </button>
+                        
+                        <button class="btn btn-secondary" style="width: 100%; margin-bottom: 0.75rem;" onclick="saveAsDraft()">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/>
+                            </svg>
+                            Guardar Borrador
+                        </button>
+                        
+                        <button class="btn btn-secondary" style="width: 100%;" onclick="resetForm()">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                            </svg>
+                            Limpiar Formulario
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+        <script src="import.js"></script>
+
+</body>
+</html>

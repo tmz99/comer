@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeFlow - Servicios de Transporte</title>
+    <style>
+        /* TradeFlow - CSS Minimalista Ultra Simple */
+        :root {
+            /* Colores Base - Modo Claro */
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --text-tertiary: #9ca3af;
+            --border-color: #e5e7eb;
+            --border-hover: #d1d5db;
+            
+            /* Colores de Acento */
+            --accent-primary: #299db9;
+            --accent-hover: #2563eb;
+            --accent-light: #dbeafe;
+            
+            /* Estados */
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --success-bg: #d1fae5;
+            --warning-bg: #fef3c7;
+            --error-bg: #fee2e2;
+            
+            /* Gradientes */
+            --gradient-success: linear-gradient(135deg, var(--success), #34d399);
+        }
+
+        [data-theme="dark"] {
+            /* Modo Oscuro */
+            --bg-primary: #1f2937;
+            --bg-secondary: #111827;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-tertiary: #9ca3af;
+            --border-color: #374151;
+            --border-hover: #4b5563;
+            
+            /* Estados Oscuros */
+            --success-bg: #064e3b;
+            --warning-bg: #78350f;
+            --error-bg: #7f1d1d;
+        }
+
+        /* Reset y Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-primary);
+            border-radius: 8px;
+            padding: 16px 24px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-subtitle {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr 320px;
+            gap: 24px;
+            min-height: calc(100vh - 200px);
+        }
+
+        /* Panel izquierdo - Filtros */
+        .filters-panel {
+            background: var(--bg-primary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            height: fit-content;
+            position: sticky;
+            top: 24px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .filter-section {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .filter-section:last-child {
+            border-bottom: none;
+        }
+
+        .filter-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .transport-type-selector {
+            display: flex;
+            background: var(--bg-primary);
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .type-btn {
+            flex: 1;
+            padding: 8px 12px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            border-right: 1px solid var(--border-color);
+            background: none;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .type-btn:last-child {
+            border-right: none;
+        }
+
+        .type-btn:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .type-btn.active {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .modality-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .modality-btn {
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--bg-primary);
+            cursor: pointer;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .modality-btn:hover {
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+        }
+
+        .modality-btn.active {
+            border-color: var(--success);
+            background: var(--success-bg);
+            color: var(--success);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 14px;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        /* Panel central - Listado */
+        .transport-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .transport-card {
+            background: var(--bg-primary);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .transport-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .transport-card.selected {
+            border-color: var(--success);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--success-bg) 100%);
+        }
+
+        .transport-card.hidden {
+            display: none;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .company-info {
+            flex: 1;
+        }
+
+        .company-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .company-modality {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--accent-light);
+            color: var(--accent-primary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .price-info {
+            text-align: right;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--success);
+        }
+
+        .price-unit {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .card-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .detail-item {
+            font-size: 14px;
+        }
+
+        .detail-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .detail-value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .feature-tag {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+            border-color: var(--accent-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            color: white;
+        }
+
+        /* Panel derecho - Detalles */
+        .details-panel {
+            background: var(--bg-primary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            height: fit-content;
+            position: sticky;
+            top: 24px;
+            overflow: hidden;
+        }
+
+        .details-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+
+        .selected-company {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .selected-route {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .summary-section {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-section:last-child {
+            border-bottom: none;
+        }
+
+        .summary-section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .summary-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .summary-item span:first-child {
+            color: var(--text-secondary);
+        }
+
+        .summary-value {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .summary-item.total {
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .summary-item.total .summary-value {
+            color: var(--success);
+            font-size: 16px;
+        }
+
+        .messaging-section {
+            background: var(--success-bg);
+            margin: 16px 20px;
+            border-radius: 6px;
+            padding: 16px;
+        }
+
+        .messaging-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--success);
+            margin-bottom: 8px;
+        }
+
+        .messaging-subtitle {
+            font-size: 12px;
+            color: var(--success);
+            margin-bottom: 12px;
+        }
+
+        .btn-message {
+            width: 100%;
+            padding: 8px 16px;
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-message:hover {
+            background: #059669;
+        }
+
+        .btn-contract {
+            width: 100%;
+            padding: 12px 20px;
+            background: var(--gradient-success);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 16px 20px;
+            width: calc(100% - 40px);
+            transition: all 0.2s ease;
+        }
+
+        .btn-contract:hover {
+            background: linear-gradient(135deg, #059669, #10b981);
+        }
+
+        .contract-features {
+            padding: 16px 20px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* Estados sin selección */
+        .no-selection {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-tertiary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-layout {
+                grid-template-columns: 280px 1fr 300px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .filters-panel, .details-panel {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .card-details {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .card-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <div class="header-title">Servicios de Transporte</div>
+                <div class="header-subtitle">Selecciona y contrata servicios de transporte internacional e interno para tus operaciones logísticas</div>
+            </div>
+            <div class="header-actions">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <span id="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="main-layout">
+            <!-- Panel izquierdo - Filtros -->
+            <div class="filters-panel">
+                <div class="section-header">Filtros de Búsqueda</div>
+                
+                <div class="filter-section">
+                    <div class="filter-title">Tipo de Transporte</div>
+                    <div class="transport-type-selector">
+                        <button class="type-btn active">Internacional</button>
+                        <button class="type-btn">Nacional</button>
+                        <button class="type-btn">Ambos</button>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="filter-title">Modalidad</div>
+                    <div class="modality-grid">
+                        <button class="modality-btn active" data-modality="maritimo">Marítimo</button>
+                        <button class="modality-btn" data-modality="aereo">Aéreo</button>
+                        <button class="modality-btn" data-modality="terrestre">Terrestre</button>
+                        <button class="modality-btn" data-modality="ferroviario">Ferroviario</button>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="form-group">
+                        <label class="form-label">País de Origen</label>
+                        <input type="text" class="form-input" placeholder="Buscar país..." value="Argentina">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">País de Destino</label>
+                        <input type="text" class="form-input" placeholder="Buscar país..." value="Brasil">
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="form-group">
+                        <label class="form-label">Tipo de Carga</label>
+                        <select class="form-select">
+                            <option>Carga General</option>
+                            <option>Refrigerada</option>
+                            <option>Peligrosa</option>
+                            <option>Sobredimensionada</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="form-group">
+                        <label class="form-label">Fecha de Embarque</label>
+                        <input type="date" class="form-input" value="2025-09-15">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Fecha de Llegada</label>
+                        <input type="date" class="form-input" value="2025-09-22">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel central - Listado de transportes -->
+            <div class="transport-list">
+                <div class="transport-card selected" data-modality="maritimo">
+                    <div class="card-header">
+                        <div class="company-info">
+                            <div class="company-name">MarCargo International</div>
+                            <span class="company-modality">Marítimo</span>
+                        </div>
+                        <div class="price-info">
+                            <div class="price">$2,450</div>
+                            <div class="price-unit">USD/contenedor</div>
+                        </div>
+                    </div>
+
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Tiempo:</div>
+                            <div class="detail-value">7-10 días</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Cobertura:</div>
+                            <div class="detail-value">MERCOSUR</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Puertos:</div>
+                            <div class="detail-value">Buenos Aires - Santos</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Capacidad:</div>
+                            <div class="detail-value">20'/40' FCL</div>
+                        </div>
+                    </div>
+
+                    <div class="card-features">
+                        <span class="feature-tag">Seguimiento GPS</span>
+                        <span class="feature-tag">Seguro incluido</span>
+                        <span class="feature-tag">Manipulación especial</span>
+                        <span class="feature-tag">Documentación completa</span>
+                    </div>
+
+                    <div class="card-actions">
+                        <button class="btn">Ver detalles</button>
+                        <button class="btn btn-primary">Seleccionar</button>
+                    </div>
+                </div>
+
+                <div class="transport-card" data-modality="aereo">
+                    <div class="card-header">
+                        <div class="company-info">
+                            <div class="company-name">AeroLogistics Express</div>
+                            <span class="company-modality">Aéreo</span>
+                        </div>
+                        <div class="price-info">
+                            <div class="price">$4,800</div>
+                            <div class="price-unit">USD/tonelada</div>
+                        </div>
+                    </div>
+
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Tiempo:</div>
+                            <div class="detail-value">2-3 días</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Cobertura:</div>
+                            <div class="detail-value">Global</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Aeropuertos:</div>
+                            <div class="detail-value">EZE - GRU</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Peso máx:</div>
+                            <div class="detail-value">15 toneladas</div>
+                        </div>
+                    </div>
+
+                    <div class="card-features">
+                        <span class="feature-tag">Express</span>
+                        <span class="feature-tag">Control temperatura</span>
+                        <span class="feature-tag">Tracking online</span>
+                        <span class="feature-tag">Alta seguridad</span>
+                    </div>
+
+                    <div class="card-actions">
+                        <button class="btn">Ver detalles</button>
+                        <button class="btn btn-primary">Seleccionar</button>
+                    </div>
+                </div>
+
+                <div class="transport-card" data-modality="terrestre">
+                    <div class="card-header">
+                        <div class="company-info">
+                            <div class="company-name">TransRuta Continental</div>
+                            <span class="company-modality">Terrestre</span>
+                        </div>
+                        <div class="price-info">
+                            <div class="price">$1,200</div>
+                            <div class="price-unit">USD/viaje</div>
+                        </div>
+                    </div>
+
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Tiempo:</div>
+                            <div class="detail-value">4-6 días</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Cobertura:</div>
+                            <div class="detail-value">MERCOSUR</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Ruta:</div>
+                            <div class="detail-value">Buenos Aires - São Paulo</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Carga máx:</div>
+                            <div class="detail-value">28 toneladas</div>
+                        </div>
+                    </div>
+
+                    <div class="card-features">
+                        <span class="feature-tag">Flota propia</span>
+                        <span class="feature-tag">GPS en tiempo real</span>
+                        <span class="feature-tag">Seguro total</span>
+                        <span class="feature-tag">Combustible incluido</span>
+                    </div>
+
+                    <div class="card-actions">
+                        <button class="btn">Ver detalles</button>
+                        <button class="btn btn-primary">Seleccionar</button>
+                    </div>
+                </div>
+
+                <div class="transport-card" data-modality="ferroviario">
+                    <div class="card-header">
+                        <div class="company-info">
+                            <div class="company-name">FerroSur Logistics</div>
+                            <span class="company-modality">Ferroviario</span>
+                        </div>
+                        <div class="price-info">
+                            <div class="price">$890</div>
+                            <div class="price-unit">USD/vagón</div>
+                        </div>
+                    </div>
+
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Tiempo:</div>
+                            <div class="detail-value">8-12 días</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Cobertura:</div>
+                            <div class="detail-value">Corredor Bioceánico</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Ruta:</div>
+                            <div class="detail-value">Retiro - Porto Alegre</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Capacidad:</div>
+                            <div class="detail-value">60 toneladas</div>
+                        </div>
+                    </div>
+
+                    <div class="card-features">
+                        <span class="feature-tag">Eco-friendly</span>
+                        <span class="feature-tag">Económico</span>
+                        <span class="feature-tag">Carga masiva</span>
+                        <span class="feature-tag">Frecuencia semanal</span>
+                    </div>
+
+                    <div class="card-actions">
+                        <button class="btn">Ver detalles</button>
+                        <button class="btn btn-primary">Seleccionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel derecho - Detalles -->
+            <div class="details-panel">
+                <div class="details-header">
+                    <div class="selected-company">MarCargo International</div>
+                    <div class="selected-route">Marítimo - Buenos Aires → Santos (Brasil)</div>
+                </div>
+
+                <div class="summary-section">
+                    <h4>Desglose de Costos</h4>
+                    <div class="summary-item">
+                        <span>Flete marítimo</span>
+                        <span class="summary-value">$1,850 USD</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Manipulación puerto</span>
+                        <span class="summary-value">$320 USD</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Documentación</span>
+                        <span class="summary-value">$180 USD</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Seguro de carga</span>
+                        <span class="summary-value">$100 USD</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Total</span>
+                        <span class="summary-value">$2,450 USD</span>
+                    </div>
+                </div>
+
+                <div class="messaging-section">
+                    <div class="messaging-title">Comunicación Directa</div>
+                    <div class="messaging-subtitle">Contacta con el operador desde la plataforma</div>
+                    <button class="btn-message">Enviar mensaje</button>
+                </div>
+
+                <button class="btn-contract">Contratar Transporte</button>
+
+                <div class="contract-features">
+                    Comunicación interna segura<br>
+                    Documentación automática<br>
+                    Seguimiento en tiempo real
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Toggle tema oscuro/claro
+    function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.getElementById('theme-icon');
+
+        if (body.getAttribute('data-theme') === 'dark') {
+            body.removeAttribute('data-theme');
+            themeIcon.textContent = '🌙';
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            themeIcon.textContent = '☀️';
+        }
+    }
+
+    // Selección de tipo de transporte
+    const typeButtons = document.querySelectorAll('.type-btn');
+    const modalityButtons = document.querySelectorAll('.modality-btn');
+    const transportCards = document.querySelectorAll('.transport-card');
+
+    typeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            typeButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterTransports();
+        });
+    });
+
+    modalityButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            modalityButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterTransports();
+        });
+    });
+
+    function filterTransports() {
+        const selectedType = document.querySelector('.type-btn.active').textContent.toLowerCase();
+        const selectedModality = document.querySelector('.modality-btn.active').dataset.modality;
+
+        transportCards.forEach(card => {
+            const cardModality = card.dataset.modality;
+            let show = false;
+
+            if (selectedType === 'ambos' || cardModality === selectedModality) {
+                show = true;
+            }
+
+            card.style.display = show ? 'block' : 'none';
+        });
+    }
+
+    // Selección de tarjeta
+    transportCards.forEach(card => {
+        card.addEventListener('click', () => {
+            transportCards.forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            updateDetailsPanel(card);
+        });
+    });
+
+    function updateDetailsPanel(card) {
+        const companyName = card.querySelector('.company-name').textContent;
+        const modality = card.querySelector('.company-modality').textContent;
+        const route = card.querySelector('.detail-item:nth-child(3) .detail-value').textContent;
+
+        document.querySelector('.selected-company').textContent = companyName;
+        document.querySelector('.selected-route').textContent = `${modality} - ${route}`;
+        // Aquí podrías actualizar también los costos si quieres hacerlo dinámico
+    }
+</script>
