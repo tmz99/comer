@@ -748,10 +748,10 @@
         // Add loading states to buttons
         document.querySelectorAll('.hero-cta, .final-cta-button').forEach(button => {
             button.addEventListener('click', function(e) {
-                if (this.getAttribute('href') === '#registro') {
+                if (this.getAttribute('href') === '#dashboard') {
                     e.preventDefault();
                     // Here you would normally redirect to registration page
-                    alert('Redirigiendo a la página de registro...');
+                    alert('Redirigiendo a la página de dashboard...');
                 }
             });
         });
